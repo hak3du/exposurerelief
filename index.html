@@ -1127,117 +1127,130 @@
         </section>
 
         <!-- Service Configurator / Form -->
-        <section id="configurator" class="col-span-24 border-box bg-dark-alt">
-            <div class="section-header">
-                <div>
-                    <div class="urgency-badge">⚡ INSTANT QUOTE · GET PRICING IN YOUR INBOX</div>
-                    <span class="mono accent-text">[ 01_SERVICE_SELECTION ]</span>
-                    <h2 class="section-title">INITIALIZE_ENGAGEMENT</h2>
-                    <p class="mono dim-text" style="font-size: 0.9rem; margin-top: 15px;">
-                        Complete form below → Receive instant quote via email → Schedule consultation. All data encrypted and confidential.
-                    </p>
-                </div>
+       <section id="configurator" class="col-span-24 border-box bg-dark-alt">
+  <div class="section-header">
+    <div>
+      <div class="urgency-badge">⚡ INSTANT QUOTE · DIRECT TO INBOX</div>
+      <span class="mono accent-text">[ 01_SERVICE_SELECTION ]</span>
+      <h2 class="section-title">INITIALIZE_ENGAGEMENT</h2>
+      <p class="mono dim-text" style="font-size: 0.9rem; margin-top: 15px;">
+        Complete the form → Receive pricing & next steps instantly.  
+        No sales calls. No friction. Confidential by default.
+      </p>
+    </div>
+  </div>
+
+  <form
+    id="quote-form"
+    action="https://formspree.io/f/xbdjeglk"
+    method="POST"
+  >
+    <!-- Formspree metadata -->
+    <input type="hidden" name="_subject" value="🚨 New High-Priority Service Request">
+    <input type="hidden" name="_template" value="table">
+
+    <div class="config-grid">
+
+      <!-- LEFT: FORM -->
+      <div class="config-form">
+
+        <div class="input-group">
+          <label class="mono">FULL_NAME <span class="required">*</span></label>
+          <input type="text" name="name" class="cyber-input" placeholder="John Doe" required>
+        </div>
+
+        <div class="input-group">
+          <label class="mono">EMAIL_ADDRESS <span class="required">*</span></label>
+          <input type="email" name="email" class="cyber-input" placeholder="you@company.com" required>
+        </div>
+
+        <div class="input-group">
+          <label class="mono">WEBSITE / SYSTEM URL <span class="required">*</span></label>
+          <input type="url" name="website" class="cyber-input" placeholder="https://example.com" required>
+        </div>
+
+        <div class="input-group">
+          <label class="mono">PHONE_NUMBER (OPTIONAL)</label>
+          <input type="tel" name="phone" class="cyber-input" placeholder="+27 00 000 0000">
+        </div>
+
+        <div class="input-group">
+          <label class="mono">SERVICE_TYPE <span class="required">*</span></label>
+          <select name="service" class="cyber-input" required>
+            <option value="Website Audit / Penetration Testing">Website Audit / Penetration Testing</option>
+            <option value="API Debugging & Security">API Debugging & Security</option>
+            <option value="Cybersecurity Consulting">Cybersecurity Consulting</option>
+            <option value="Emergency Bug Fixes">Emergency Bug Fixes</option>
+            <option value="Prototype / Proof of Concept">Prototype / Proof of Concept</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label class="mono">URGENCY_LEVEL <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="urgency" value="Standard (48h)" checked>
+              <span>STANDARD (48h)</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="urgency" value="Priority (12h)">
+              <span>PRIORITY (12h)</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="urgency" value="Critical (2h)">
+              <span>CRITICAL (2h)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="mono">SCOPE / PROBLEM DESCRIPTION</label>
+          <textarea
+            name="notes"
+            class="cyber-input"
+            placeholder="Briefly describe the issue, target environment, deadline, or objective..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: QUOTE PANEL -->
+      <div class="quote-panel">
+        <div class="quote-box">
+
+          <div class="mono accent-text" style="font-size: 10px;">SERVICE_THRESHOLD</div>
+          <div class="quote-amount mono">$250 – $500+</div>
+
+          <div class="currency-conversions mono dim-text">
+            <div>€250 – €500 EUR</div>
+            <div>£210 – £420 GBP</div>
+            <div>R4,500 – R9,000 ZAR</div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border); margin: 20px 0;">
+
+          <div class="payment-notice mono">
+            MINIMUM ENGAGEMENT · SERIOUS INQUIRIES ONLY
+          </div>
+
+          <div class="guarantee-box">
+            <div class="title">DIRECT RESPONSE GUARANTEE</div>
+            <div class="mono dim-text" style="font-size: 9px; line-height: 1.6;">
+              Requests are reviewed personally.  
+              Response within hours, not days.
             </div>
-            
-            <form id="quote-form">
-                <div class="config-grid">
-                    <div class="config-form">
-                        <!-- Personal Information -->
-                        <div class="input-group">
-                            <label class="mono">FULL_NAME <span class="required">*</span></label>
-                            <input type="text" id="client-name" name="name" class="cyber-input" placeholder="John Doe" required>
-                            <div class="error-message" id="error-name">Please enter your full name</div>
-                        </div>
+          </div>
 
-                        <div class="input-group">
-                            <label class="mono">EMAIL_ADDRESS <span class="required">*</span></label>
-                            <input type="email" id="client-email" name="email" class="cyber-input" placeholder="your@email.com" required>
-                            <div class="error-message" id="error-email">Please enter a valid email address</div>
-                        </div>
+          <button type="submit" class="pay-btn" style="margin-top: 20px;">
+            GET_INSTANT_QUOTE
+          </button>
 
-                        <div class="input-group">
-                            <label class="mono">WEBSITE_URL <span class="required">*</span></label>
-                            <input type="url" id="client-website" name="website" class="cyber-input" placeholder="https://yourwebsite.com" required>
-                            <div class="error-message" id="error-website">Please enter a valid website URL</div>
-                        </div>
+        </div>
+      </div>
 
-                        <div class="input-group">
-                            <label class="mono">PHONE_NUMBER (OPTIONAL)</label>
-                            <input type="tel" id="client-phone" name="phone" class="cyber-input" placeholder="+1 (555) 123-4567">
-                        </div>
-
-                        <!-- Service Selection -->
-                        <div class="input-group">
-                            <label class="mono">SELECT_SERVICE_TYPE <span class="required">*</span></label>
-                            <select id="service-type" name="service" class="cyber-input" onchange="updateQuote()" required>
-                                <option value="audit">Website Audit / Penetration Testing</option>
-                                <option value="api">API Debugging & Security</option>
-                                <option value="consult">Cybersecurity Consulting</option>
-                                <option value="fix">Emergency Bug Fixes</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="mono">URGENCY_LEVEL <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label class="radio-item">
-                                    <input type="radio" name="urgency" value="standard" checked onchange="updateQuote()">
-                                    <span>STANDARD (48h)</span>
-                                </label>
-                                <label class="radio-item">
-                                    <input type="radio" name="urgency" value="priority" onchange="updateQuote()">
-                                    <span>PRIORITY (12h)</span>
-                                </label>
-                                <label class="radio-item">
-                                    <input type="radio" name="urgency" value="critical" onchange="updateQuote()">
-                                    <span>CRITICAL (2h)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="mono">SCOPE_NOTES</label>
-                            <textarea id="scope-notes" name="notes" class="cyber-input" placeholder="Describe target environment, endpoints, specific concerns, or issues you're experiencing..."></textarea>
-                        </div>
-
-                        <div class="success-message" id="form-success">
-                            ✓ Quote sent successfully! Check your email (including spam folder) for detailed pricing and next steps.
-                        </div>
-                        <div class="error-message" id="form-error">
-                            ✗ Failed to send quote. Please try again or contact us directly at uhack8521@gmail.com
-                        </div>
-                    </div>
-
-                    <div class="quote-panel">
-                        <div class="quote-box">
-                            <div class="mono accent-text" style="font-size: 10px;">ESTIMATED_QUOTE</div>
-                            <div class="quote-amount mono" id="quote-display">$2,400.00</div>
-                            <div class="currency-conversions mono dim-text">
-                                <div id="conv-eur">€2,210.00 EUR</div>
-                                <div id="conv-gbp">£1,890.00 GBP</div>
-                                <div id="conv-zar">R45,200.00 ZAR</div>
-                            </div>
-                            <hr style="border: none; border-top: 1px solid var(--border); margin: 20px 0;">
-                            <div class="payment-notice mono">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)" style="margin-right: 5px;">
-                                    <path d="M12 2L1 21h22L12 2zm0 3.45L20.14 19H3.86L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/>
-                                </svg>
-                                MINIMUM THRESHOLD: $500.00
-                            </div>
-                            <div class="guarantee-box">
-                                <div class="title">INSTANT QUOTE DELIVERY</div>
-                                <div class="mono dim-text" style="font-size: 9px; line-height: 1.6;">
-                                    Quote sent instantly to your email. Detailed breakdown, timeline, and payment options included. Response within 2 hours guaranteed.
-                                </div>
-                            </div>
-                            <button type="submit" class="pay-btn" style="margin-top: 20px;">
-                                GET_INSTANT_QUOTE
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </section>
+    </div>
+  </form>
+</section>
 
         <!-- Contact Section -->
         <section id="contact" class="col-span-24 border-box contact-section">
