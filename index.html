@@ -1127,7 +1127,7 @@
         </section>
 
         <!-- Service Configurator / Form -->
-       <section id="configurator" class="col-span-24 border-box bg-dark-alt">
+      <section id="configurator" class="col-span-24 border-box bg-dark-alt">
   <div class="section-header">
     <div>
       <div class="urgency-badge">⚡ INSTANT QUOTE · DIRECT TO INBOX</div>
@@ -1148,6 +1148,7 @@
     <!-- Formspree metadata -->
     <input type="hidden" name="_subject" value="🚨 New High-Priority Service Request">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
 
     <div class="config-grid">
 
@@ -1251,6 +1252,31 @@
     </div>
   </form>
 </section>
+
+<!-- OPTIONAL: simple JS for instant confirmation -->
+<script>
+  const form = document.getElementById('quote-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const action = form.action;
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        alert('✅ Quote sent! Check your inbox (including spam).');
+        form.reset();
+      } else {
+        alert('✗ Failed to send quote. Try again or email directly.');
+      }
+    } catch (error) {
+      alert('✗ Failed to send quote. Check your connection.');
+    }
+  });
+</script>
 
         <!-- Contact Section -->
         <section id="contact" class="col-span-24 border-box contact-section">
